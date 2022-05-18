@@ -1,0 +1,18 @@
+1. Почему, если закомитить эти строки: 
+
+//String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
+//System.out.println(body);
+
+то следущий код работает: 
+
+List<Nasa> list = mapper.readValue(
+     response.getEntity().getContent(), new TypeReference<>() {
+     }
+);
+list.forEach(System.out::println);
+
+Все отображается на экран, но если же я их разкомичиваю, то код выше перестает работать и выдает ошибку: 
+
+No content to map due to end-of-input
+
+
